@@ -45,11 +45,13 @@ router.post("/create-order", async (req, res) => {
   paymentMethod
 } = req.body;
 
-    const order = new Order({
-  let prefix = "TKT-";
+    // Generate proper order prefix
+let prefix = "TKT-";
 
 if (orderType === "membership") prefix = "MEM-";
 if (orderType === "meetgreet") prefix = "MG-";
+
+const order = new Order({
 
 orderId: prefix + uuidv4().slice(0,8),
   email,

@@ -46,9 +46,12 @@ router.post("/create-order", async (req, res) => {
 } = req.body;
 
     const order = new Order({
-  orderId:
-  (orderType === "membership" ? "MEM-" : "TKT-") +
-  uuidv4().slice(0, 8),
+  let prefix = "TKT-";
+
+if (orderType === "membership") prefix = "MEM-";
+if (orderType === "meetgreet") prefix = "MG-";
+
+orderId: prefix + uuidv4().slice(0,8),
   email,
   orderType: orderType || "ticket",
   eventId,

@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema({
   },
   orderType: {
   type: String,
-  enum: ["ticket", "membership"],
+  enum: ["ticket", "membership", "meetgreet"],
   default: "ticket"
 },
 
